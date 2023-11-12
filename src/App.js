@@ -8,17 +8,17 @@ import Favorites from "./components/Favorites";
 function App() {
   // ======= STATES =======
   const [movieList, setMovieList] = useState([]);
-  const [favs, setFav] = useState([]);
+  const [favs, setFav] = useState([1, 2, 3, 4]);
 
   // ======= API CONNECTION =======
   useEffect(() => {
+    let npsw = "Bearer " + process.env.REACT_APP_AUTH;
     const fetchUsers = async () => {
       const options = {
         method: "GET",
         headers: {
           accept: "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MGM1ZDk2MTUwMTFiMjBiZjFlOWJlODMyZjljZWVkMiIsInN1YiI6IjY1NDFiYWYxNDFhNTYxMDBkZGE5OTQ0NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Cs-hLzpgSxBq6pbKA5WJFn4fCUZrpMYuds1kRmamG-U",
+          Authorization: npsw,
         },
       };
       const res = await fetch(
@@ -34,14 +34,14 @@ function App() {
   // ======= FUNCTIONS =======
 
   const addToFavs = (newData) => {
-    const transformedData = newData.map((item) => {
-      const key = Object.keys(item)[0]; // will get [1,2,3....]
-      return item[key]; // return obj without key
-    });
-    console.log(transformedData);
-    console.log(transformedData + 1);
-    // setFav([...favs, newData]);
-    setFav([...favs, transformedData]);
+    console.log("done");
+    // const transformedData = newData.map((item) => {
+    //   const key = Object.keys(item)[0]; // will get [1,2,3....]
+    //   return item[key]; // return obj without key
+    // });
+    // console.log(transformedData);
+    // // setFav([...favs, newData]);
+    // setFav([...favs, transformedData]);
   };
 
   // ======= RENDER =======

@@ -1,8 +1,8 @@
 import React from "react";
 
 export default function Favorites({ favs }) {
-  console.log(favs);
-  favs.map((movie) => console.log(movie));
+  // console.log(favs);
+  // favs.map((movie) => console.log(movie));
 
   return (
     <div className="favs">
@@ -15,9 +15,9 @@ export default function Favorites({ favs }) {
             ) : (
               <>
                 <li>HAS FAVS {favs.length}</li>
-                {/* {favs.map((movie) => (
-                  <li key={movie.id}>{movie.title}</li>
-                ))} */}
+                {favs.map((movie) => (
+                  <li key={movie}>{movie}</li>
+                ))}
               </>
             )}
           </ul>

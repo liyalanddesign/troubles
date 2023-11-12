@@ -4,6 +4,7 @@ import "./Movie.css";
 export default function Movie({ movie, addToFavs }) {
   // ======= FUNCTIONS =======
   const handleClick = () => {
+    console.log(movie.id, movie.title);
     // Здесь вы можете получить данные, которые вы хотите добавить в favs
     const newData = [movie]; // Пример новых данных
 
