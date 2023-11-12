@@ -1,0 +1,50 @@
+.card {
+  max-width: 100%;
+  margin-bottom: 25px;
+}
+
+.card_container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.card_poster {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+.card_body {
+  /* max-width: 70%; */
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card_title {
+  font-size: 18px;
+  font-weight: 800;
+  margin-top: 12px;
+  min-height: 60px;
+  margin-bottom: 12px;
+}
+.card_text {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.card_rating-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card_rating {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 16px;
+}
+.add-tofavorite {
+  font-weight: bold;
+}
