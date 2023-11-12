@@ -39,6 +39,7 @@ function App() {
       return item[key]; // return obj without key
     });
     console.log(transformedData);
+    console.log(transformedData + 1);
     // setFav([...favs, newData]);
     setFav([...favs, transformedData]);
   };
