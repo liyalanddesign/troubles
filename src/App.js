@@ -10,6 +10,8 @@ function App() {
   const [movieList, setMovieList] = useState([]);
   const [favs, setFav] = useState([]);
 
+  console.log(favs);
+
   // ======= API CONNECTION =======
   let npsw = "Bearer " + process.env.REACT_APP_AUTH;
   useEffect(() => {
