@@ -8,12 +8,13 @@ import Favorites from "./components/Favorites";
 function App() {
   // ======= STATES =======
   const [movieList, setMovieList] = useState([]);
-  const [favs, setFav] = useState([1, 2, 3, 4]);
+  const [favs, setFav] = useState([]);
 
   // ======= API CONNECTION =======
+  let npsw = "Bearer " + process.env.REACT_APP_AUTH;
   useEffect(() => {
-    let npsw = "Bearer " + process.env.REACT_APP_AUTH;
-    const fetchUsers = async () => {
+    // GET LIST OF ALL MOVIES FROM SERVER
+    const fetchMovies = async () => {
       const options = {
         method: "GET",
         headers: {
@@ -22,26 +23,26 @@ function App() {
         },
       };
       const res = await fetch(
-        "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc",
-        options
+        "https://6531d4944d4c2e3f333d4de9.mockapi.io/api/books/"
       );
       const fetchedResp = await res.json();
-      setMovieList(fetchedResp.results);
+
+      setMovieList(fetchedResp);
     };
-    fetchUsers();
+    fetchMovies();
   }, []);
 
   // ======= FUNCTIONS =======
 
-  const addToFavs = (newData) => {
-    console.log("done");
-    // const transformedData = newData.map((item) => {
-    //   const key = Object.keys(item)[0]; // will get [1,2,3....]
-    //   return item[key]; // return obj without key
-    // });
-    // console.log(transformedData);
-    // // setFav([...favs, newData]);
-    // setFav([...favs, transformedData]);
+  const handleAdd = async (ID) => {
+    setFav([...favs, ID]);
+  };
+
+  const handleDelete = async (id) => {
+    await fetch("https://6531d4944d4c2e3f333d4de9.mockapi.io/api/books/" + id, {
+      method: "DELETE",
+    });
+    setFav(favs.filter((item) => item.id !== id));
   };
 
   // ======= RENDER =======
@@ -60,10 +61,11 @@ function App() {
       <div className="container">
         <div className="row mt-5">
           <div className="col col-md-12 col-lg-3">
-            <Favorites favs={favs} />
+            <Favorites favs={favs} deleteItem={handleDelete} />
+            {/* <Favorites movies={movieList} favs={favs} /> */}
           </div>
           <div className="col col-md-12 col-lg-9">
-            <MovieList movies={movieList} addToFavs={addToFavs} />
+            <MovieList movies={movieList} addToFavs={handleAdd} />
           </div>
         </div>
       </div>
